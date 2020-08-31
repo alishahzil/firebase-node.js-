@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="/css/navstyle.css">
+    <link rel="stylesheet"  href="/css/style.css">
+    <title>firebase | <%= title %> </title>
+</head>
+<body>
+    <div class="main-nav">
+    <h2>  All blogs of firebase is show here</h2>
+   <div class="navbar"><%- include('./partials/nav.ejs') %></div>  
+    </div>
+    <div class="vertical"></div>
+    <div class="blogs">
+        <% data.forEach(blog=>{ %>
+            <a class="single" href="/ali/<%= blog.id%>">
+            <h4>Name :</h4> </a>
+            <h4 class="title"   ><%= blog.data().name %> </h3>
+            <h4>Proffesion: </h4>
+            <h4 class="title"><%= blog.data().profession %> </h3>
+           
+             <div class="delete" id="<%= blog.id  %>">
+               <a class="delete" data-doc="<%= blog.id%>" >Delete </a> 
+             </div>  
+             <div class="vertical"></div>  
+        <% }); %>
+    </div>
+    <script>
+        var trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click',(e)=>{
+            const endpoint = `/ali/${trashcan.dataset.doc}`;
+            console.log(endpoint);
+           fetch(endpoint,{
+               method:'DELETE'
+           }).then((response)=>response.json())
+           .then((data)=>window.location.href = data.redirect)
+           .catch(()=>{});
+        });
+    
+
+
+    </script>
+    <script src="/index.js"></script>
+</body>
+</html> 

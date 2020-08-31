@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navstyle.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-nav">
+    <h2>Add a new blog here</h2>
+    <div class="navbar"><%- include('./partials/nav.ejs') %> </div> 
+</div>
+<div class="vertical"></div>
+<div class="form-div">
+ <form action="/blogs" method="POST">
+     <label for="name">Enter the name</label><br>
+     <input type="text" name="name" id="profession"><br>
+     <label for="profession">Enter the profession</label><br>
+     <input type="text" name="profession" id="profession"><br>
+     <input type="submit" style="margin-top:1rem;">
+ </form>
+</div>
+    
+</body>
+</html
